@@ -5,6 +5,7 @@
 window.onload = function(){
   var ametuchiArea = document.getElementById('ametuchi_area');
   var kanaListSpan = document.getElementById('kana_list');
+  var kanaCountSpan = document.getElementById('kana_count');
   var kaburiListSpan = document.getElementById('kaburi_list');
   var kanaList = "あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわをん".split("");
   var seiDakuDic = {
@@ -12,7 +13,8 @@ window.onload = function(){
     'ざ': 'さ', 'じ': 'し', 'ず': 'す', 'ぜ': 'せ', 'ぞ': 'そ',
     'だ': 'た', 'ぢ': 'ち', 'づ': 'つ', 'で': 'て', 'ど': 'と',
     'ば': 'は', 'び': 'ひ', 'ぶ': 'ふ', 'べ': 'へ', 'ぼ': 'ほ',
-    'ゔ': 'う',
+    'ゔ': 'う', 'っ': 'つ',
+    'ぱ': 'は', 'ぴ': 'ひ', 'ぷ': 'ふ', 'ぺ': 'へ', 'ぽ': 'ほ',
   };
   var checkKana = function(){
     var areaVal = ametuchiArea.value.split("");
@@ -21,6 +23,7 @@ window.onload = function(){
     var restKanaList = kanaList;
     for (var i=0; i<areaVal.length; i++) {
       var checkChar = areaVal[i];
+      if ( checkChar == ' ' || checkChar == '　' || checkChar == "\n" ) { continue }
       if (checkChar in seiDakuDic) {
         checkChar = seiDakuDic[checkChar];
       }
@@ -32,6 +35,7 @@ window.onload = function(){
       }
     }
     kanaListSpan.innerHTML = restKanaList.join("");
+    kanaCountSpan.innerHTML = restKanaList.length;
     if (doubleList.length > 0) {
       kaburiListSpan.innerHTML = doubleList.join("");
     } else {
@@ -44,10 +48,11 @@ window.onload = function(){
   checkKana();
 };
 </script>
+<meta name="viewport" content="width=device-width">
 </head>
 <body style='font-size: .8em;'>
   <div style='text-align:center; margin: 0 10em;'>
-  のこり：<span id='kana_list'></span><br>
+  のこり<span id='kana_count'></span>もじ：<span id='kana_list'></span><br>
   かぶり：<span id='kaburi_list'></span>
   <textarea id='ametuchi_area' style='margin:.7em 0; width:100%; height:60%; font-size: 2em;'></textarea>
   </div>
