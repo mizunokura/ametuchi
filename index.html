@@ -24,7 +24,7 @@ window.onload = function(){
     var restKanaList = kanaList;
     for (var i=0; i<areaVal.length; i++) {
       var checkChar = areaVal[i];
-      if ( checkChar == ' ' || checkChar == '　' || checkChar == "\n" || checkChar == "。" || checkChar == "、" ) { continue }
+      if ( checkChar == ' ' || checkChar == '　' || checkChar == "\n" || checkChar == "。" || checkChar == "、" || checkChar == "ー" ) { continue }
       if (checkChar in seiDakuDic) {
         checkChar = seiDakuDic[checkChar];
       }
