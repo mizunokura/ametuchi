@@ -15,6 +15,7 @@ window.onload = function(){
     'ば': 'は', 'び': 'ひ', 'ぶ': 'ふ', 'べ': 'へ', 'ぼ': 'ほ',
     'ゔ': 'う', 'っ': 'つ',
     'ぱ': 'は', 'ぴ': 'ひ', 'ぷ': 'ふ', 'ぺ': 'へ', 'ぽ': 'ほ',
+    'ゃ': 'や', 'ゅ': 'ゆ', 'ょ': 'よ',
   };
   var checkKana = function(){
     var areaVal = ametuchiArea.value.split("");
@@ -23,7 +24,7 @@ window.onload = function(){
     var restKanaList = kanaList;
     for (var i=0; i<areaVal.length; i++) {
       var checkChar = areaVal[i];
-      if ( checkChar == ' ' || checkChar == '　' || checkChar == "\n" ) { continue }
+      if ( checkChar == ' ' || checkChar == '　' || checkChar == "\n" || checkChar == "。" || checkChar == "、" ) { continue }
       if (checkChar in seiDakuDic) {
         checkChar = seiDakuDic[checkChar];
       }
